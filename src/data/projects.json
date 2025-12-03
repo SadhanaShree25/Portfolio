@@ -1,0 +1,26 @@
+[
+  {
+    "title": "AI Quiz Generator",
+    "imageSrc": "projects/project.png",
+    "description": "AI-powered quiz generator web app that dynamically creates multiple-choice quizzes based on any topic you provide.",
+    "skills": ["React", "Express", "Node"],
+    "demo": "https://ai-quiz-generator-bice.vercel.app/",
+    "source": "https://github.com/SadhanaShree25/AI-Quiz-Generator"
+  },
+  {
+    "title": "Text into Speech",
+    "imageSrc": "projects/project.png",
+    "description": "A web app that converts typed text into speech using JavaScript. Users can type text and hear it spoken aloud.",
+    "skills": ["Html","CSS", "JavaScript"],
+    "demo": "https://voice-synthesizer-text-to-speech-app1.netlify.app/",
+    "source": "https://github.com/SadhanaShree25/Text-to-speech"
+  },
+  {
+    "title": "Login-Authentication",
+    "imageSrc": "projects/project.png",
+    "description": "A secure and modern login authentication system built with Replit Auth, featuring multiple login methods, protected routes, and a clean, professional interface.",
+    "skills": ["React","TypeScript"],
+    "demo": "https://secure-loginauthentication-system-app.netlify.app/#/login",
+    "source": "https://github.com/SadhanaShree25/Login--Authentication"
+  }
+]

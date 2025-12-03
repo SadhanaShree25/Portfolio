@@ -1,0 +1,56 @@
+@import "../../vars.css";
+
+.container {
+  margin-top: 120px;
+  margin-left: 10%;
+  margin-right: 10%;
+  color: var(--color-text);
+}
+
+.title {
+  font-size: 42px;
+  font-weight: 800;
+  margin-bottom: 40px;
+  font-family: var(--font-roboto);
+}
+
+.card {
+  background: linear-gradient(
+    135deg,
+    rgba(33, 45, 79, 0.8),
+    rgba(16, 30, 60, 0.8)
+  );
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(10px);
+}
+
+.degree {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.college {
+  font-size: 20px;
+  opacity: 0.8;
+  margin-bottom: 18px;
+}
+
+.description {
+  font-size: 18px;
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
+@media screen and (max-width: 830px) {
+  .container {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
+  .title {
+    text-align: center;
+  }
+}
