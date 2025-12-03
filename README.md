@@ -12,7 +12,6 @@ This is a **web-based portfolio project** that showcases my journey as a develop
 This portfolio project is designed to:
 
 - Provide a **professional online presence** for sharing my profile with employers, mentors, or collaborators.  
-- Highlight my **learning journey**, certifications, and development interests.  
 - Serve as a **central hub** for my contact information and professional links.  
 - Demonstrate my ability to **build a clean, responsive, and modern web application** using frontend technologies.  
 
@@ -21,9 +20,9 @@ This portfolio project is designed to:
 ## 📫 Connect With Me
 You can reach me through:
 
-- **Email:** your.email@example.com  
+- **Email:** iamsadhanashree@gmail.com  
 - **LinkedIn:** [Sadhana Shree](https://www.linkedin.com/SadhanaShree)  
-- **GitHub:** [Sadhana Shree](https://github.com/SadhanaShree25)  
+- **GitHub:** [Sadhana Shree25](https://github.com/SadhanaShree25)  
 
 ---
 
