@@ -93,13 +93,13 @@ const FloatingOctahedron = ({ position, color, scale = 1 }: FloatingShapeProps) 
 
 const Scene3D = () => {
   const shapes = useMemo(() => [
-    { position: [-4, 2, -2] as [number, number, number], color: "#a855f7", scale: 0.8, type: 'icosahedron' },
-    { position: [4, -1, -3] as [number, number, number], color: "#3b82f6", scale: 0.6, type: 'torus' },
-    { position: [-3, -2, -4] as [number, number, number], color: "#14b8a6", scale: 0.5, type: 'octahedron' },
-    { position: [3, 2.5, -2] as [number, number, number], color: "#ec4899", scale: 0.7, type: 'icosahedron' },
-    { position: [0, -3, -5] as [number, number, number], color: "#a855f7", scale: 0.4, type: 'torus' },
-    { position: [-5, 0, -3] as [number, number, number], color: "#3b82f6", scale: 0.5, type: 'octahedron' },
-    { position: [5, 1, -4] as [number, number, number], color: "#14b8a6", scale: 0.6, type: 'icosahedron' },
+    { position: [-6, 2.5, -8] as [number, number, number], color: "#a855f7", scale: 0.7, type: 'icosahedron' },
+    { position: [6, -1.5, -10] as [number, number, number], color: "#3b82f6", scale: 0.5, type: 'torus' },
+    { position: [-5, -2.5, -12] as [number, number, number], color: "#14b8a6", scale: 0.4, type: 'octahedron' },
+    { position: [5, 3, -9] as [number, number, number], color: "#ec4899", scale: 0.6, type: 'icosahedron' },
+    { position: [0, -4, -14] as [number, number, number], color: "#a855f7", scale: 0.3, type: 'torus' },
+    { position: [-7, 0.5, -11] as [number, number, number], color: "#3b82f6", scale: 0.4, type: 'octahedron' },
+    { position: [7, 1.5, -13] as [number, number, number], color: "#14b8a6", scale: 0.5, type: 'icosahedron' },
   ], []);
 
   return (
@@ -123,9 +123,9 @@ const Scene3D = () => {
 
 const ThreeScene = () => {
   return (
-    <div className="absolute inset-0 z-0">
+    <div className="absolute inset-0 -z-10 opacity-60">
       <Canvas
-        camera={{ position: [0, 0, 8], fov: 60 }}
+        camera={{ position: [0, 0, 10], fov: 50 }}
         gl={{ antialias: true, alpha: true }}
       >
         <Scene3D />
