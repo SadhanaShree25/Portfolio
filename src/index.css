@@ -1,11 +1,16 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
 
 @layer base {
-  :root {
+  /* Dark theme (default) */
+  :root,
+  .dark {
     --background: 225 25% 8%;
     --foreground: 210 40% 98%;
 
@@ -56,6 +61,40 @@
     --shadow-glow-blue: 0 0 40px hsl(200 80% 55% / 0.3);
     --shadow-glow-pink: 0 0 40px hsl(320 80% 60% / 0.3);
   }
+
+  /* Light theme (white theme) */
+  .light {
+    --background: 0 0% 98%;
+    --foreground: 225 25% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 225 25% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 225 25% 12%;
+
+    --primary: 265 89% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 200 80% 45%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 220 14% 96%;
+    --muted-foreground: 225 12% 40%;
+
+    --accent: 320 80% 55%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 13% 91%;
+    --input: 220 14% 96%;
+    --ring: 265 89% 55%;
+
+    --glass-bg: hsl(0 0% 100% / 0.7);
+    --glass-border: hsl(220 13% 91% / 0.8);
+  }
 }
 
 @layer base {
@@ -79,10 +118,18 @@
 
 @layer components {
   .glass-card {
-    @apply bg-card/60 backdrop-blur-xl border border-white/10 rounded-2xl;
+    @apply bg-card/60 backdrop-blur-xl border rounded-2xl;
+    border-color: hsl(225 20% 30% / 0.3);
     box-shadow: 
       0 8px 32px hsl(265 89% 66% / 0.1),
       inset 0 1px 0 hsl(0 0% 100% / 0.05);
+  }
+
+  .light .glass-card {
+    border-color: hsl(220 13% 91% / 0.9);
+    box-shadow: 
+      0 8px 32px hsl(265 89% 66% / 0.08),
+      inset 0 1px 0 hsl(0 0% 100% / 0.8);
   }
 
   .gradient-text {
@@ -224,6 +271,10 @@
   background: hsl(225 25% 8%);
 }
 
+.light ::-webkit-scrollbar-track {
+  background: hsl(0 0% 96%);
+}
+
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(180deg, hsl(265 89% 66%), hsl(200 80% 55%));
   border-radius: 4px;
@@ -237,4 +288,9 @@
 ::selection {
   background: hsl(265 89% 66% / 0.3);
   color: hsl(210 40% 98%);
+}
+
+.light ::selection {
+  background: hsl(265 89% 66% / 0.25);
+  color: hsl(225 25% 12%);
 }

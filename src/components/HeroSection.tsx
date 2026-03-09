@@ -43,7 +43,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 md:pt-20">
       {/* Gradient Background Orbs */}
       <div className="absolute top-1/4 -left-32 w-96 h-96 bg-glow-purple/20 rounded-full blur-3xl animate-pulse" />
       <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-glow-blue/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
@@ -74,12 +74,12 @@ const HeroSection = () => {
           className="text-5xl md:text-7xl lg:text-8xl font-display font-bold mb-6 leading-tight"
         >
           <span className="block">Hi, I'm</span>
-          <span className="gradient-text">Alex Johnson</span>
+          <span className="gradient-text">Sadhana Shree</span>
         </motion.h1>
 
         <motion.div variants={itemVariants} className="mb-8">
           <h2 className="text-2xl md:text-3xl font-display text-muted-foreground">
-            <span className="text-foreground">Frontend</span> / <span className="gradient-text-alt">Full-Stack Developer</span>
+            <span className="text-foreground">Aspiring Software Developer Engineer </span> <span className="gradient-text-alt"></span>
           </h2>
         </motion.div>
 
@@ -87,8 +87,7 @@ const HeroSection = () => {
           variants={itemVariants}
           className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-12"
         >
-          Crafting exceptional digital experiences with cutting-edge technologies.
-          Passionate about clean code, beautiful design, and seamless interactions.
+        I build responsive web applications and intelligent systems with a focus on performance, scalability, and user experience.
         </motion.p>
 
         <motion.div
@@ -121,9 +120,9 @@ const HeroSection = () => {
           className="flex items-center justify-center gap-6"
         >
           {[
-            { icon: Github, href: "https://github.com", label: "GitHub" },
-            { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
-            { icon: Mail, href: "mailto:hello@example.com", label: "Email" },
+            { icon: Github, href: "https://github.com/SadhanaShree25", label: "GitHub" },
+            { icon: Linkedin, href: "https://www.linkedin.com/in/sadhana-shree-1759152a3", label: "LinkedIn" },
+            { icon: Mail, href: "mailto:iamsadhanashree@gmail.com", label: "Email" },
           ].map(({ icon: Icon, href, label }) => (
             <motion.a
               key={label}

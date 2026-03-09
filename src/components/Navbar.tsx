@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import ThemeToggle from "./ThemeToggle";
 
 const navLinks = [
   { label: "About", href: "#about" },
@@ -39,11 +40,9 @@ const Navbar = () => {
           {/* Logo */}
           <motion.a
             href="#"
-            className="text-xl font-display font-bold gradient-text"
+            className="text-2xl md:text-3xl font-display font-bold gradient-text"
             whileHover={{ scale: 1.05 }}
-          >
-            Alex.dev
-          </motion.a>
+          ></motion.a>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
@@ -51,7 +50,7 @@ const Navbar = () => {
               <motion.a
                 key={link.label}
                 href={link.href}
-                className="text-muted-foreground hover:text-foreground transition-colors duration-300 animated-underline"
+                className="text-base md:text-lg text-muted-foreground hover:text-foreground transition-colors duration-300 animated-underline font-medium"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 + 0.3 }}
@@ -60,10 +59,11 @@ const Navbar = () => {
                 {link.label}
               </motion.a>
             ))}
+            <ThemeToggle />
             <motion.a
               href="/resume.pdf"
               download
-              className="btn-outline py-2 px-4 text-sm"
+              className="btn-outline py-2.5 px-5 text-base font-medium"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.9 }}
@@ -74,14 +74,18 @@ const Navbar = () => {
             </motion.a>
           </div>
 
-          {/* Mobile Menu Button */}
-          <motion.button
-            className="md:hidden p-2 text-foreground"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            whileTap={{ scale: 0.95 }}
-          >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </motion.button>
+          {/* Mobile: theme toggle + menu button */}
+          <div className="flex md:hidden items-center gap-2">
+            <ThemeToggle />
+            <motion.button
+              className="p-2.5 text-foreground"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              whileTap={{ scale: 0.95 }}
+              aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+            >
+              {isMobileMenuOpen ? <X size={26} /> : <Menu size={26} />}
+            </motion.button>
+          </div>
         </div>
       </motion.nav>
 
@@ -111,7 +115,7 @@ const Navbar = () => {
                   key={link.label}
                   href={link.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-2xl font-display text-foreground hover:gradient-text transition-all duration-300"
+                  className="text-2xl md:text-3xl font-display font-medium text-foreground hover:gradient-text transition-all duration-300"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
@@ -120,9 +124,9 @@ const Navbar = () => {
                 </motion.a>
               ))}
               <motion.a
-                href="/resume.pdf"
+                href="./Sadhana Shree.pdf"
                 download
-                className="btn-primary mt-4"
+                className="btn-primary mt-4 text-lg px-8 py-4"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6 }}

@@ -16,26 +16,32 @@ interface SkillCategory {
 
 const skillCategories: SkillCategory[] = [
   {
-    title: "Frontend",
+    title: "Programming Languages",
     icon: "🎨",
     skills: [
-      { name: "React.js", level: 90, color: "#61DAFB" },
-      { name: "TypeScript", level: 85, color: "#3178C6" },
-      { name: "Next.js", level: 80, color: "#ffffff" },
-      { name: "Tailwind CSS", level: 95, color: "#06B6D4" },
-      { name: "Framer Motion", level: 85, color: "#FF0055" },
+      { name: "HTML", level: 90, color: "#61DAFB" },
+      { name: "CSS", level: 90, color: "#3178C6" },
+      { name: "JavaScript", level: 60, color: "#ffffff" },
+      { name: "Java", level: 70, color: "#FF0055" },
     ],
   },
   {
-    title: "Backend",
+    title: "Frameworks & Libraries",
     icon: "⚙️",
     skills: [
-      { name: "Node.js", level: 75, color: "#339933" },
-      { name: "Express.js", level: 70, color: "#ffffff" },
-      { name: "PostgreSQL", level: 65, color: "#336791" },
-      { name: "MongoDB", level: 70, color: "#47A248" },
-      { name: "REST APIs", level: 80, color: "#FF6B6B" },
+      { name: "React.js", level: 75, color: "#339933" },
+      { name: "Node.js", level: 70, color: "#ffffff" },
+      { name: "Express.js", level: 70, color: "#47A248" },
+    
     ],
+  },
+  {
+    title:"Databases",
+    icon: "🗄️" ,
+    skills:[
+      {name: "MongoDb", level:50, color:"#47A248"},
+      {name: "MySQL", level:60, color:"#FF0055"},
+    ]
   },
   {
     title: "Tools & Platforms",
@@ -44,7 +50,6 @@ const skillCategories: SkillCategory[] = [
       { name: "Git & GitHub", level: 90, color: "#F05032" },
       { name: "VS Code", level: 95, color: "#007ACC" },
       { name: "Figma", level: 75, color: "#F24E1E" },
-      { name: "Docker", level: 60, color: "#2496ED" },
       { name: "Vercel", level: 85, color: "#ffffff" },
     ],
   },
@@ -143,7 +148,7 @@ const SkillsSection = () => {
           <div className="w-24 h-1 mx-auto mt-6 rounded-full bg-gradient-to-r from-secondary via-primary to-accent" />
         </motion.div>
 
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {skillCategories.map((category, categoryIndex) => (
             <motion.div
               key={category.title}

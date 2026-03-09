@@ -2,10 +2,10 @@ import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, Twitter, Heart } from "lucide-react";
 
 const socialLinks = [
-  { icon: Github, href: "https://github.com", label: "GitHub" },
-  { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
-  { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
-  { icon: Mail, href: "mailto:hello@example.com", label: "Email" },
+  { icon: Github, href: "https://github.com/SadhanaShree25", label: "GitHub" },
+  { icon: Linkedin, href: "https://www.linkedin.com/in/sadhana-shree-1759152a3/", label: "LinkedIn" },
+ // { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
+  { icon: Mail, href: "mailto:iamsadhanashree@gmail.com", label: "Email" },
 ];
 
 const Footer = () => {
@@ -23,9 +23,7 @@ const Footer = () => {
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
-            <span className="text-2xl font-display font-bold gradient-text">
-              Alex.dev
-            </span>
+           
           </motion.div>
 
           {/* Social Links */}
@@ -60,7 +58,7 @@ const Footer = () => {
             viewport={{ once: true }}
             className="text-muted-foreground text-sm flex items-center gap-2"
           >
-            Made with <Heart size={14} className="text-accent fill-accent" /> by Alex Johnson
+            Made with <Heart size={14} className="text-accent fill-accent" /> by Sadhana Shree
           </motion.p>
         </div>
 
@@ -73,7 +71,7 @@ const Footer = () => {
           className="text-center mt-8 pt-8 border-t border-border/30"
         >
           <p className="text-muted-foreground/60 text-sm">
-            © {new Date().getFullYear()} Alex Johnson. All rights reserved.
+            © {new Date().getFullYear()} Sadhana Shree. All rights reserved.
           </p>
         </motion.div>
       </div>

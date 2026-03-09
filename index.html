@@ -1,21 +1,27 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <script>
+      (function() {
+        const stored = localStorage.getItem('theme');
+        document.documentElement.classList.add(stored === 'light' ? 'light' : 'dark');
+      })();
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Alex Johnson | Frontend & Full-Stack Developer Portfolio</title>
-    <meta name="description" content="Portfolio of Alex Johnson - Frontend & Full-Stack Developer crafting exceptional digital experiences with React, TypeScript, and modern web technologies." />
-    <meta name="author" content="Alex Johnson" />
+    <title>Sadhana Shree</title>
+    <meta name="description" content="Portfolio of Sadhana Shree - Frontend & Full-Stack Developer crafting exceptional digital experiences with React, TypeScript, and modern web technologies." />
+    <meta name="author" content="Sadhana Shree" />
     <meta name="keywords" content="frontend developer, full-stack developer, react developer, portfolio, web developer" />
 
-    <meta property="og:title" content="Alex Johnson | Developer Portfolio" />
+    <meta property="og:title" content="Sadhana Shree | Developer Portfolio" />
     <meta property="og:description" content="Frontend & Full-Stack Developer crafting exceptional digital experiences" />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@alexjohnson" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <meta name="twitter:site" content="@SadhanaShree" />
+    
   </head>
 
   <body>

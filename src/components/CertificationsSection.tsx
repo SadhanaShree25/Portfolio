@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useRef, useState } from "react";
-import { Award, ExternalLink, Calendar } from "lucide-react";
+import { Award, ExternalLink, Calendar, FileText } from "lucide-react";
 
 interface Certification {
   title: string;
@@ -12,48 +12,28 @@ interface Certification {
 
 const certifications: Certification[] = [
   {
-    title: "Meta Front-End Developer",
-    issuer: "Meta (Coursera)",
-    year: "2024",
-    credentialUrl: "https://coursera.org",
+    title: "Oracle Cloud Infrastructure 2025 Certified AI Foundations Associate",
+    issuer: "Oracle",
+    year: "2025",
+    credentialUrl: "./Orcale.pdf",
     icon: "🎓",
   },
   {
-    title: "AWS Cloud Practitioner",
-    issuer: "Amazon Web Services",
-    year: "2024",
-    credentialUrl: "https://aws.amazon.com",
+    title: "Pragati: Path to Future - Cohort 4",
+    issuer: "Infosys Springboard",
+    year: "2025",
+    credentialUrl: "/Pragati-Path to Future.pdf",
     icon: "☁️",
   },
+  
   {
-    title: "JavaScript Algorithms & Data Structures",
-    issuer: "freeCodeCamp",
-    year: "2023",
-    credentialUrl: "https://freecodecamp.org",
-    icon: "📜",
-  },
-  {
-    title: "React Developer Certification",
-    issuer: "HackerRank",
-    year: "2023",
-    credentialUrl: "https://hackerrank.com",
+    title: "React Certification",
+    issuer: "Udemy",
+    year: "2026",
+    credentialUrl: "/React-Udemy.pdf",
     icon: "⚛️",
   },
-  {
-    title: "Full Stack Open",
-    issuer: "University of Helsinki",
-    year: "2023",
-    credentialUrl: "https://fullstackopen.com",
-    icon: "🏆",
-  },
-  {
-    title: "Google UX Design",
-    issuer: "Google (Coursera)",
-    year: "2022",
-    credentialUrl: "https://coursera.org",
-    icon: "🎨",
-  },
-];
+]
 
 const CertificationCard = ({ cert, index }: { cert: Certification; index: number }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -69,7 +49,7 @@ const CertificationCard = ({ cert, index }: { cert: Certification; index: number
       className="relative group"
     >
       <motion.div
-        className="glass-card p-6 rounded-2xl h-full cursor-pointer"
+        className="glass-card p-4 rounded-xl h-full flex flex-col cursor-pointer"
         animate={{
           y: isHovered ? -8 : 0,
         }}
@@ -77,7 +57,7 @@ const CertificationCard = ({ cert, index }: { cert: Certification; index: number
       >
         {/* Icon */}
         <motion.div
-          className="text-4xl mb-4"
+          className="text-3xl mb-3"
           animate={{
             rotate: isHovered ? [0, -10, 10, 0] : 0,
             scale: isHovered ? 1.1 : 1,
@@ -88,31 +68,59 @@ const CertificationCard = ({ cert, index }: { cert: Certification; index: number
         </motion.div>
 
         {/* Content */}
-        <h3 className="text-lg font-display font-semibold text-foreground mb-2 group-hover:gradient-text transition-all duration-300">
+        <h3 className="text-base font-display font-semibold text-foreground mb-2 group-hover:gradient-text transition-all duration-300 leading-tight">
           {cert.title}
         </h3>
         
-        <div className="flex items-center gap-2 text-muted-foreground text-sm mb-3">
-          <Award size={14} className="text-primary" />
+        <div className="flex items-center gap-2 text-muted-foreground text-xs mb-2">
+          <Award size={12} className="text-primary" />
           <span>{cert.issuer}</span>
         </div>
         
-        <div className="flex items-center gap-2 text-muted-foreground text-sm mb-4">
-          <Calendar size={14} className="text-secondary" />
+        <div className="flex items-center gap-2 text-muted-foreground text-xs mb-3">
+          <Calendar size={12} className="text-secondary" />
           <span>{cert.year}</span>
         </div>
 
-        {cert.credentialUrl && (
-          <motion.a
-            href={cert.credentialUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-sm text-primary hover:text-secondary transition-colors duration-300"
-            whileHover={{ x: 5 }}
-          >
-            View Credential
-            <ExternalLink size={14} />
-          </motion.a>
+        {/* PDF Viewer or External Link */}
+        {cert.credentialUrl && cert.credentialUrl.endsWith(".pdf") ? (
+          <div className="mt-auto pt-3 space-y-2">
+            <div className="relative overflow-hidden rounded-lg border border-border/50 bg-muted/20 backdrop-blur-sm">
+              <iframe
+                src={cert.credentialUrl}
+                title={cert.title}
+                className="w-full h-48 rounded-lg"
+                style={{ border: 'none' }}
+              />
+              <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-background/20 to-transparent" />
+            </div>
+            <motion.a
+              href={cert.credentialUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-xs text-primary hover:text-secondary transition-colors duration-300 w-full justify-center py-1.5 rounded-md hover:bg-primary/10"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <FileText size={12} />
+              Open PDF
+              <ExternalLink size={12} />
+            </motion.a>
+          </div>
+        ) : (
+          cert.credentialUrl && (
+            <motion.a
+              href={cert.credentialUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-xs text-primary hover:text-secondary transition-colors duration-300 mt-auto pt-3"
+              whileHover={{ x: 5 }}
+            >
+              View Credential
+              <ExternalLink size={12} />
+            </motion.a>
+          )
         )}
 
         {/* Glow border on hover */}
@@ -159,7 +167,7 @@ const CertificationsSection = () => {
           <div className="w-24 h-1 mx-auto mt-6 rounded-full bg-gradient-to-r from-primary via-secondary to-accent" />
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {certifications.map((cert, index) => (
             <CertificationCard key={cert.title} cert={cert} index={index} />
           ))}
