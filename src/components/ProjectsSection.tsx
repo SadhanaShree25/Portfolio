@@ -8,7 +8,7 @@ interface Project {
   image: string;
   techStack: string[];
   githubUrl: string;
-  liveUrl: string;
+  liveUrl?: string; // Made optional
   featured?: boolean;
 }
 
@@ -34,6 +34,17 @@ const projects: Project[] = [
     techStack: ["React", "OpenWeather API", "Geolocation", "CSS Animations"],
     githubUrl: "https://github.com/SadhanaShree25/Weather-App",
     liveUrl: "weather-app-jet-ten-81.vercel.app/",
+  },
+
+  {
+    title: "Email Assistant",
+    description:
+      "NexusInbox is an intelligent, multi-user AI email assistant that streamlines communication management using LangGraph and Google Gemini for reasoning-driven automation.",
+    image:
+      "https://images.unsplash.com/photo-1557200134-90327ee9fafa?w=800&q=80",
+    techStack: ["React", "LangGraph", "Python", "Google Gemini", "FastAPI"],
+    githubUrl: "https://github.com/SadhanaShree25/Email-Assistant",
+    liveUrl: "https://email-assistant-demo.vercel.app/",
   },
 ];
 
@@ -108,16 +119,18 @@ const ProjectCard = ({
             >
               <Github size={20} />
             </motion.a>
-            <motion.a
-              href={project.liveUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 glass-card rounded-lg hover:bg-primary/20 transition-colors"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <ExternalLink size={20} />
-            </motion.a>
+            {project.liveUrl && (
+              <motion.a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 glass-card rounded-lg hover:bg-primary/20 transition-colors"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <ExternalLink size={20} />
+              </motion.a>
+            )}
           </motion.div>
         </div>
 
