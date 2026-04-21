@@ -30,11 +30,10 @@ const Navbar = () => {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isScrolled
-            ? "py-4 bg-background/80 backdrop-blur-xl border-b border-border/50"
-            : "py-6 bg-transparent"
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
+          ? "py-4 bg-background/80 backdrop-blur-xl border-b border-border/50"
+          : "py-6 bg-transparent"
+          }`}
       >
         <div className="container mx-auto px-6 flex items-center justify-between">
           {/* Logo */}
@@ -61,8 +60,8 @@ const Navbar = () => {
             ))}
             <ThemeToggle />
             <motion.a
-              href="/resume.pdf"
-              download
+              href="/SadhanaShree__.pdf"
+              download="SadhanaShree_Resume.pdf"
               className="btn-outline py-2.5 px-5 text-base font-medium"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -124,8 +123,8 @@ const Navbar = () => {
                 </motion.a>
               ))}
               <motion.a
-                href="./Sadhana Shree.pdf"
-                download
+                href="/SadhanaShree__.pdf"
+                download="SadhanaShree_Resume.pdf"
                 className="btn-primary mt-4 text-lg px-8 py-4"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}

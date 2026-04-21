@@ -62,7 +62,7 @@ const CTASection = () => {
             viewport={{ once: true }}
             className="text-xl text-muted-foreground mb-12 max-w-2xl mx-auto"
           >
-            I'm always excited to collaborate on innovative projects, discuss new opportunities, 
+            I'm always excited to collaborate on innovative projects, discuss new opportunities,
             or simply connect with fellow developers.
           </motion.p>
 
@@ -88,8 +88,8 @@ const CTASection = () => {
               </motion.span>
             </motion.a>
             <motion.a
-              href="/Sadhana Shree.pdf"
-              download
+              href="/SadhanaShree__.pdf"
+              download="SadhanaShree_Resume.pdf"
               className="btn-outline inline-flex items-center gap-2"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
