@@ -294,3 +294,73 @@
   background: hsl(265 89% 66% / 0.25);
   color: hsl(225 25% 12%);
 }
+
+/* Custom Cursor & Scroll Progress */
+@media (pointer: fine) {
+  .custom-cursor-enabled * {
+    cursor: none !important;
+  }
+}
+
+.scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--secondary)), hsl(var(--accent)));
+  transform-origin: 0%;
+  z-index: 100;
+}
+
+/* Floating Input Label styles */
+.floating-label-group {
+  position: relative;
+}
+
+.floating-label-group label {
+  position: absolute;
+  left: 1.5rem;
+  top: 1.1rem;
+  pointer-events: none;
+  transition: all 0.25s ease-out;
+  transform-origin: left top;
+}
+
+.floating-label-group input:focus ~ label,
+.floating-label-group input:not(:placeholder-shown) ~ label,
+.floating-label-group textarea:focus ~ label,
+.floating-label-group textarea:not(:placeholder-shown) ~ label {
+  transform: translateY(-1.8rem) scale(0.85);
+  color: hsl(var(--primary));
+  font-weight: 500;
+  left: 0.5rem;
+}
+
+/* Glowing text shadows */
+.text-glow-purple {
+  text-shadow: 0 0 20px hsl(var(--primary) / 0.5);
+}
+
+.text-glow-blue {
+  text-shadow: 0 0 20px hsl(var(--secondary) / 0.5);
+}
+
+/* Gradient animate overlay border */
+.glowing-border-active {
+  position: relative;
+}
+.glowing-border-active::after {
+  content: '';
+  position: absolute;
+  inset: -1.5px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)), hsl(var(--accent)));
+  z-index: -1;
+  opacity: 0.2;
+  transition: opacity 0.3s ease;
+}
+.glowing-border-active:hover::after {
+  opacity: 0.7;
+}
+

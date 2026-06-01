@@ -9,17 +9,24 @@ const ContactSection = () => {
     email: "",
     message: "",
   });
+  const [isSending, setIsSending] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [focusedField, setFocusedField] = useState<string | null>(null);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate form submission
-    setIsSubmitted(true);
+    setIsSending(true);
+
+    // Simulate network latency
     setTimeout(() => {
-      setIsSubmitted(false);
-      setFormState({ name: "", email: "", message: "" });
-    }, 3000);
+      setIsSending(false);
+      setIsSubmitted(true);
+
+      // Reset form after overlay delay
+      setTimeout(() => {
+        setIsSubmitted(false);
+        setFormState({ name: "", email: "", message: "" });
+      }, 3000);
+    }, 1500);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -29,14 +36,8 @@ const ContactSection = () => {
     }));
   };
 
-  const inputClasses = (field: string) => `
-    w-full px-6 py-4 bg-muted/50 border rounded-xl text-foreground placeholder:text-muted-foreground 
-    focus:outline-none transition-all duration-300
-    ${focusedField === field ? "border-primary shadow-[0_0_20px_hsl(265_89%_66%_/_0.3)]" : "border-border hover:border-primary/50"}
-  `;
-
   return (
-    <section id="contact" className="relative py-32 overflow-hidden">
+    <section id="contact" className="relative py-28 overflow-hidden">
       {/* Background Elements */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
       <div className="absolute top-1/3 -left-64 w-[500px] h-[500px] bg-glow-purple/10 rounded-full blur-3xl" />
@@ -50,14 +51,12 @@ const ContactSection = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <span className="inline-block px-4 py-2 rounded-full glass-card text-sm text-primary mb-4">
+          <span className="inline-block px-4 py-1.5 rounded-full glass-card text-sm text-primary mb-4 font-medium">
             Contact
           </span>
-          <h2 className="section-heading">
-            Get In Touch
-          </h2>
-          <p className="section-subheading mx-auto mt-4">
-            Have a project in mind or want to collaborate? I'd love to hear from you!
+          <h2 className="section-heading">Get In Touch</h2>
+          <p className="section-subheading mx-auto mt-4 font-sans text-sm md:text-base">
+            Have a project in mind, an opportunity to discuss, or just want to say hi? I'd love to connect!
           </p>
           <div className="w-24 h-1 mx-auto mt-6 rounded-full bg-gradient-to-r from-primary via-accent to-secondary" />
         </motion.div>
@@ -67,58 +66,60 @@ const ContactSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.8 }}
           viewport={{ once: true }}
-          className="max-w-2xl mx-auto"
+          className="max-w-xl mx-auto"
         >
-          <div className="glass-card p-8 md:p-12 rounded-3xl relative">
-            {/* Success overlay */}
+          <div className="glass-card p-8 md:p-10 rounded-3xl relative border border-border/20 bg-card/15 backdrop-blur-md">
+            {/* Success Overlay */}
             <motion.div
               initial={false}
               animate={{
                 opacity: isSubmitted ? 1 : 0,
                 pointerEvents: isSubmitted ? "auto" : "none",
               }}
-              className="absolute inset-0 bg-card/95 backdrop-blur-sm rounded-3xl flex items-center justify-center z-10"
+              className="absolute inset-0 bg-background/95 backdrop-blur-md rounded-3xl flex items-center justify-center z-20"
             >
               <motion.div
-                initial={{ scale: 0 }}
-                animate={{ scale: isSubmitted ? 1 : 0 }}
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: isSubmitted ? 1 : 0.9, opacity: isSubmitted ? 1 : 0 }}
                 transition={{ type: "spring", stiffness: 200 }}
-                className="text-center"
+                className="text-center p-6"
               >
                 <motion.div
                   animate={{ rotate: [0, 360] }}
-                  transition={{ duration: 0.5 }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
+                  className="inline-block mb-4"
                 >
-                  <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
+                  <CheckCircle className="w-16 h-16 text-green-500" />
                 </motion.div>
                 <h3 className="text-2xl font-display font-bold gradient-text mb-2">Message Sent!</h3>
-                <p className="text-muted-foreground">Thank you for reaching out. I'll get back to you soon!</p>
+                <p className="text-muted-foreground text-sm font-sans">
+                  Thank you for reaching out. I will review your note and respond shortly.
+                </p>
               </motion.div>
             </motion.div>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-8">
               {/* Name Field */}
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.3, duration: 0.5 }}
                 viewport={{ once: true }}
+                className="floating-label-group"
               >
-                <label className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
-                  <User size={16} className="text-primary" />
-                  Your Name
-                </label>
                 <input
                   type="text"
                   name="name"
                   value={formState.name}
                   onChange={handleChange}
-                  onFocus={() => setFocusedField("name")}
-                  onBlur={() => setFocusedField(null)}
-                  placeholder="John Doe"
+                  placeholder=" "
                   required
-                  className={inputClasses("name")}
+                  className="w-full px-5 py-4 bg-muted/30 border border-border/40 focus:border-primary focus:shadow-[0_0_20px_hsl(var(--primary)/0.25)] rounded-xl text-foreground text-sm focus:outline-none transition-all duration-300 peer"
                 />
+                <label className="text-muted-foreground text-xs md:text-sm flex items-center gap-2 peer-focus:text-primary transition-all duration-300">
+                  <User size={15} />
+                  Your Name
+                </label>
               </motion.div>
 
               {/* Email Field */}
@@ -127,22 +128,21 @@ const ContactSection = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.4, duration: 0.5 }}
                 viewport={{ once: true }}
+                className="floating-label-group"
               >
-                <label className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
-                  <Mail size={16} className="text-secondary" />
-                  Your Email
-                </label>
                 <input
                   type="email"
                   name="email"
                   value={formState.email}
                   onChange={handleChange}
-                  onFocus={() => setFocusedField("email")}
-                  onBlur={() => setFocusedField(null)}
-                  placeholder="john@example.com"
+                  placeholder=" "
                   required
-                  className={inputClasses("email")}
+                  className="w-full px-5 py-4 bg-muted/30 border border-border/40 focus:border-secondary focus:shadow-[0_0_20px_hsl(var(--secondary)/0.25)] rounded-xl text-foreground text-sm focus:outline-none transition-all duration-300 peer"
                 />
+                <label className="text-muted-foreground text-xs md:text-sm flex items-center gap-2 peer-focus:text-secondary transition-all duration-300">
+                  <Mail size={15} />
+                  Your Email
+                </label>
               </motion.div>
 
               {/* Message Field */}
@@ -151,39 +151,48 @@ const ContactSection = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.5, duration: 0.5 }}
                 viewport={{ once: true }}
+                className="floating-label-group"
               >
-                <label className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
-                  <MessageSquare size={16} className="text-accent" />
-                  Your Message
-                </label>
                 <textarea
                   name="message"
                   value={formState.message}
                   onChange={handleChange}
-                  onFocus={() => setFocusedField("message")}
-                  onBlur={() => setFocusedField(null)}
-                  placeholder="Tell me about your project..."
+                  placeholder=" "
                   required
-                  rows={5}
-                  className={`${inputClasses("message")} resize-none`}
+                  rows={4}
+                  className="w-full px-5 py-4 bg-muted/30 border border-border/40 focus:border-accent focus:shadow-[0_0_20px_hsl(var(--accent)/0.25)] rounded-xl text-foreground text-sm focus:outline-none transition-all duration-300 resize-none peer"
                 />
+                <label className="text-muted-foreground text-xs md:text-sm flex items-center gap-2 peer-focus:text-accent transition-all duration-300">
+                  <MessageSquare size={15} />
+                  Your Message
+                </label>
               </motion.div>
 
               {/* Submit Button */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6, duration: 0.5 }}
                 viewport={{ once: true }}
               >
                 <motion.button
                   type="submit"
-                  className="btn-primary w-full flex items-center justify-center gap-2"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
+                  disabled={isSending}
+                  className="btn-primary w-full flex items-center justify-center gap-2 cursor-pointer disabled:opacity-75 disabled:pointer-events-none rounded-xl text-sm py-4 font-bold"
+                  whileHover={{ scale: 1.01 }}
+                  whileTap={{ scale: 0.99 }}
                 >
-                  <Send size={20} />
-                  Send Message
+                  {isSending ? (
+                    <>
+                      <span className="w-5 h-5 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" />
+                      Sending Message...
+                    </>
+                  ) : (
+                    <>
+                      <Send size={16} />
+                      Send Message
+                    </>
+                  )}
                 </motion.button>
               </motion.div>
             </form>
